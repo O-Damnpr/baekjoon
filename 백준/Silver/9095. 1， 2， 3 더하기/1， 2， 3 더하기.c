@@ -1,25 +1,11 @@
 #include <stdio.h>
 
-int dp[11];
-
 int main() {
-    int t;
-    int n;
+    int t, n, dp[11] = {0, 1, 2, 4};
     
-    scanf("%d", &t);
+    for (int j = 4; j <= 10; j++) dp[j] = dp[j - 3] + dp[j - 2] + dp[j - 1];
     
-    dp[1] = 1;
-    dp[2] = 2;
-    dp[3] = 4;
-
-    for (int j = 4; j <= 10; j++) {
-        dp[j] = dp[j - 3] + dp[j - 2] + dp[j - 1];
-    }
-
-    for (int i = 0; i < t; i++) {
-        scanf("%d", &n);
-        printf("%d\n", dp[n]);
-    }
+    for (scanf("%d", &t); t--; printf("%d\n", dp[n])) scanf("%d", &n);
     
     return 0;
 }
